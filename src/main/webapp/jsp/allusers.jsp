@@ -2,10 +2,8 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Kilaru</title>
     <link href="./css/styles.css" rel="stylesheet" type="text/css">
-    <script src="http://code.jquery.com/jquery-2.2.4.js"
-            type="text/javascript"></script>
 </head>
 <body>
 
@@ -31,43 +29,6 @@
     </form>
 </div>
 
-<script>
-    $(document).ready(function () {
-        getAllUsers();
-        $("#button").click(function () {
-            $.ajax({
-                url: '/jsp_ajax_war/users',
-                method: 'post',
-                dataType: 'json',
-                data: $('#form').serialize(),
-                success: function (data) {
-                    alert('Saved successfully!');
-                    getAllUsers();
-                }
-            });
-        });
-
-
-        function getAllUsers() {
-            $.ajax({
-                url: '/jsp_ajax_war/users',
-                dataType: 'json',
-                method: 'GET',
-                success: function (data) {
-                    var userInf = $('#allUsers  tbody');
-                    userInf.empty();
-                    $(data).each(function (index, element) {
-                        userInf.append('<tr><td>' + element.firstName + '</td><td>' + element.lastName + '</td><td>'
-                            + element.codeWord + '</td><td>' + element.favFilm + '</td></tr>');
-                    })
-                }
-            });
-        }
-    })
-</script>
-
-
-
 <table id="allUsers">
     <thead>
     <tr>
@@ -80,6 +41,11 @@
     <tbody></tbody>
 </table>
 
+<script src="http://code.jquery.com/jquery-2.2.4.js"
+        type="text/javascript"></script>
+
+<script src="js/users.js"
+        type="text/javascript"></script>
 
 </body>
 </html>
